@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+    <meta name="description" content="簡單記錄自己的學習筆記">
+    
+
+    <!--Author-->
+    
+    <meta name="author" content="Li Zhong">
+    
+
+    <!--Open Graph Title-->
+    
+    <meta property="og:title" content="lambda/匿名函數（不是AWS的lambda）" />
+    
+
+    <!--Open Graph Description-->
+    
+    <meta property="og:description" content="簡單記錄自己的學習筆記" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="極簡部落格" />
+
+    <!--Type page-->
+    
+    <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>
+        lambda/匿名函數（不是AWS的lambda） - 極簡部落格
+    </title>
+
+    <!-- Tachyons Core CSS -->
+    <link rel="stylesheet" href="//unpkg.com/tachyons/css/tachyons.min.css">
+
+    <!-- Custom Fonts -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" crossorigin="anonymous">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+<body>
+
+<!-- Main Content -->
+<!-- Banner -->
+<div class="w-100 bg-1 ph5-ns ph3 text-light">
+    <nav class="db dt-l w-100 mw8 center border-box pv3">
+        <a class="db dtc-l v-mid link dim w-100 w-33-l tc tl-l mb2 mb0-l white" href="/" title="極簡部落格">
+            <img src="/images/cat.svg" class="dib h3 v-mid" alt="極簡部落格">
+            
+            <div class="dib f2 ml2 v-mid">
+                極簡部落格
+            </div>
+            
+        </a>
+        <div class="db dtc-l v-mid w-100 w-two-thirds-l tc tr-l">
+            
+            <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/" title="首頁">
+                首頁
+            </a>
+            
+            <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/archives" title="歸檔">
+                歸檔
+            </a>
+            
+            <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/about" title="關於我">
+                關於我
+            </a>
+            
+            <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/credit" title="版權相關">
+                版權相關
+            </a>
+            
+        </div>
+    </nav>
+
+    <!-- Title -->
+    <div class="w-100 mw8 center dt mt4">
+        <div class="dtc v-mid white pt6-l pb5-l pv3">
+            <h1 class="f1-l f2-m tc tc-m tl-ns">
+                lambda/匿名函數（不是AWS的lambda）
+            </h1>
+            <p class="f4 fw3 tc tc-m tl-ns">
+                
+            </p>
+        </div>
+    </div>
+
+    <!-- Icon -->
+    <div class="relative w-100 mw8 center white dn dn-m db-ns">
+        <i class="header-icon fas fa-balance-scale"></i>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="w-100 ph2 ph4-m ph5-l pv5 pv6-l ">
+    <div class="content">
+        <div class="mw8 center">
+            <div class="cf ">
+                <div class="fl w-100 w-70-l mw7 left fw3 lh-copy post-content pa3 shadow-2">
+                    <!-- Main Post Content -->
+                    <p>近來接觸了Kotlin還有Swift，發現好多語言都開始支援lambda的寫法，聯想起之前的JavaScript同樣出現了了“箭頭函數”。<br>所以來找找相關的知識來了解一下這是個怎麼樣的趨勢，而且現在都出現了類似的函數。</p>
+<p>以下先來一個範例：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//舊方法1，排序數字（JS預設排法是以char來排序</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sortNum</span>(<span class="params">a, b</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a - b;</span><br><span class="line">&#125;</span><br><span class="line">[<span class="number">234</span>,<span class="number">45</span>,<span class="number">1</span>,<span class="number">87</span>,<span class="number">234</span>,<span class="number">9</span>,<span class="number">7</span>].sort(sortNum);</span><br><span class="line"><span class="comment">//舊方法2</span></span><br><span class="line">[<span class="number">234</span>,<span class="number">45</span>,<span class="number">1</span>,<span class="number">87</span>,<span class="number">234</span>,<span class="number">9</span>,<span class="number">7</span>].sort(<span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a - b;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//箭頭函數</span></span><br><span class="line">[<span class="number">234</span>,<span class="number">45</span>,<span class="number">1</span>,<span class="number">87</span>,<span class="number">234</span>,<span class="number">9</span>,<span class="number">7</span>].sort(<span class="function">(<span class="params">a, b</span>) =&gt;</span> a - b);</span><br></pre></td></tr></table></figure></p>
+<p>從這個範例來看，我們可以發現幾個重大的發現</p>
+<ol>
+<li>不用想名稱（跟玩遊戲時的第一個卡關點就是想帳號名稱，寫程式也是一樣的！</li>
+<li>增加閱讀性，在同一行程式中直接可以閱讀到內部方法。</li>
+<li>如果<code>sortNum</code>函數只使用一次，那麼使用匿名函數會更好。</li>
+</ol>
+<p>其實JavaScript原本就有匿名函數的寫法（舊方法2），但是“箭頭函數”看起來還是比較清爽。<br>小忠子在學習箭頭函數時覺得很不習慣，但是學會了之後覺得很好寫。<br><em>不過在JavaScript中，箭頭函數內部沒有原本的<code>this</code>和<code>arguments</code>變數哦！</em></p>
+<h2 id="課內小知識"><a href="#課內小知識" class="headerlink" title="課內小知識"></a>課內小知識</h2><p>有些程式語言對於匿名函數有特別優化，在執行時可以增加效率，減少記憶體使用量。<br>有些程式語言對於匿名函數只有語法糖的支援，對於效率，記憶體相關的可能不會有太大差別（<strong>或是更糟</strong>）。<br><strong>所以當發現程式碼有效率或記憶體相關問題時，這部分可以再深入研究，看看能不能在這方面進行優化。</strong></p>
+<blockquote>
+<p>由於各個語言的特性不同，所以以上言論並非絕對</p>
+</blockquote>
+<h2 id="注意事項"><a href="#注意事項" class="headerlink" title="注意事項"></a>注意事項</h2><p>lambda其實就是為了小巧精煉而生，盡可能不要在lambda函數中做太多事情。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">234</span>,<span class="number">45</span>,<span class="number">1</span>,<span class="number">87</span>,<span class="number">234</span>,<span class="number">9</span>,<span class="number">7</span>].sort(<span class="function">(<span class="params">a, b</span>) =&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> ia = +a,</span><br><span class="line">        ib = +b;</span><br><span class="line">    <span class="keyword">if</span> (a === b) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (a &gt; b) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (a &lt; b) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p><strong>該範例只是為了盡可能表現出多行的寫法</strong><br><del>不過以JS來說，倒是更多時候會在函數內寫很多很多行</del></p>
+<h2 id="知識鏈接"><a href="#知識鏈接" class="headerlink" title="知識鏈接"></a>知識鏈接</h2><p><a href="https://zh.wikipedia.org/zh-tw/%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B0" target="_blank" rel="noopener">維基百科-匿名函數</a><br><a href="https://www.zhihu.com/question/20125256" target="_blank" rel="noopener">知乎-Lambda 表达式有何用处？如何使用？</a></p>
+
+                    
+                    <!-- Tags Bottom -->
+                    
+                        <div class="tags-container-bottom">
+                            <i class="fa fa-tag pr3 text-main-color"></i><a class="fw3 ph1 dib" href="/tags/知識/">#知識</a> <a class="fw3 ph1 dib" href="/tags/程式/">#程式</a>
+                        </div>
+                    
+                    
+                    <nav class="bt b--black-20" >
+                    
+                        <div class="mv3 fl w-50">
+                        <i class="ma2 fa fa-caret-left"></i><strong class="">上一篇</strong><br>
+                        <a href="/2018/04/10/畫UML的簡易工具/">
+                            畫UML的簡易工具
+                        </a>
+                        </div>
+                    
+                    
+                        <div class="mv3 fr tr w-50">
+                        <strong class="">下一篇</strong><i class="ma2 fa fa-caret-right"></i><br>
+                        <a href="/2018/05/03/MVC-多國語系設定方法/">
+                            MVC 多國語系設定方法
+                        </a>
+                        </div>
+                    
+                    </nav>
+                    
+                    <!-- Comments -->
+                    
+<div id="disqus_thread" class="mt5">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+
+
+
+
+                </div>
+                <div class="fl w-100 w-30-l center fw3 lh-copy pl4-ns tl black-50">
+                    
+                    <hr class="dn-l mw4 black-50 mt5" />
+                    
+                    <!-- Widget 1: About -->
+                    <div class="mt5 mt0-l bg-white pa2 shadow-2">
+    <article class="dt db-l mw8 mw8-m mw5-ns center ml0-l mv3">
+        <div class="dn dtc-m db v-mid tc pr4 pr0-l" style="min-width: 6rem;">
+            <img src="/images/profile.jpg" class="mb4-l br-100 h3 w3 h4-l w4-l dib" title="Li Zhong">
+        </div>
+        <div class="dtc db-l v-mid lh-copy measure center f6 black-80 tj">
+            喜歡將問題分解，各個擊破。<br>喜歡寫容易維護，可讀性佳的程式。<br>喜歡將事情自動化，減少做同樣的事情。
+        </div>
+    </article>
+</div>
+
+                    <hr class="dn-l mw4 black-50 mt5" />
+                    
+                    <!-- Widget 2: Categories -->
+                    
+
+                    <!-- Widget 3: Recent Posts -->
+                    <div class="mt5 tc tl-l bg-white pa2 shadow-2">
+    <h3>近期文章</h3>
+    
+        <p>
+            <a href="/2020/03/21/使用Docker在本機端部署3節點的MongoDb-Replica-Set/">使用Docker在本機端部署3節點的MongoDB Replica Set</a>
+        </p>
+    
+        <p>
+            <a href="/2019/04/01/前公司經歷、事件（？/">前公司經歷、事件（？</a>
+        </p>
+    
+        <p>
+            <a href="/2019/01/28/Single-Responsibility-Principle-單一職責原則/">Single Responsibility Principle 單一職責原則</a>
+        </p>
+    
+        <p>
+            <a href="/2019/01/28/SOLID範例預先解說(字多慎入)/">SOLID範例預先解說(字多慎入)</a>
+        </p>
+    
+        <p>
+            <a href="/2019/01/02/物件導向-SOLID/">物件導向-SOLID</a>
+        </p>
+    
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<div class="bg-1 ph2 ph5-ns pv5">
+    <div class="mv8">
+        <div class="center tc">
+            
+                <div class="dib mh3">
+                    <a class="f3 f2-ns white dim" href="https://www.facebook.com/lizhong.yeo" target="_blank">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </div>
+            
+                <div class="dib mh3">
+                    <a class="f3 f2-ns white dim" href="https://github.com/exia56" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            
+                <div class="dib mh3">
+                    <a class="f3 f2-ns white dim" href="mailto:exia5693@gmail.com" target="_blank">
+                        <i class="fa fa-envelope"></i>
+                    </a>
+                </div>
+            
+        </div>
+        <div class="f6 f5-ns center tc white pt5 fw3">
+            All right reserved | Design & Hexo <a class="link dim white" href="https://github.com/exia56/exia56.github.io">Mike Yeo</a>
+        </div>
+    </div>
+</div>
+
+<!-- After Footer -->
+<!-- Disqus Comments -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'exia56-blog';
+    
+    var disqus_url = 'https://exia56.github.io/2018/04/23/lambda-匿名函數/';
+    
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        dsq.setAttribute('data-timestamp', +new Date());
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+</body>
+
+</html>

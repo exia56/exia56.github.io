@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+    <meta name="description" content="簡單記錄自己的學習筆記">
+    
+
+    <!--Author-->
+    
+    <meta name="author" content="Li Zhong">
+    
+
+    <!--Open Graph Title-->
+    
+    <meta property="og:title" content="Single Responsibility Principle 單一職責原則" />
+    
+
+    <!--Open Graph Description-->
+    
+    <meta property="og:description" content="簡單記錄自己的學習筆記" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="極簡部落格" />
+
+    <!--Type page-->
+    
+    <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>
+        Single Responsibility Principle 單一職責原則 - 極簡部落格
+    </title>
+
+    <!-- Tachyons Core CSS -->
+    <link rel="stylesheet" href="//unpkg.com/tachyons/css/tachyons.min.css">
+
+    <!-- Custom Fonts -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" crossorigin="anonymous">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+<body>
+
+<!-- Main Content -->
+<!-- Banner -->
+<div class="w-100 bg-1 ph5-ns ph3 text-light">
+    <nav class="db dt-l w-100 mw8 center border-box pv3">
+        <a class="db dtc-l v-mid link dim w-100 w-33-l tc tl-l mb2 mb0-l white" href="/" title="極簡部落格">
+            <img src="/images/cat.svg" class="dib h3 v-mid" alt="極簡部落格">
+            
+            <div class="dib f2 ml2 v-mid">
+                極簡部落格
+            </div>
+            
+        </a>
+        <div class="db dtc-l v-mid w-100 w-two-thirds-l tc tr-l">
+            
+            <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/" title="首頁">
+                首頁
+            </a>
+            
+            <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/archives" title="歸檔">
+                歸檔
+            </a>
+            
+            <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/about" title="關於我">
+                關於我
+            </a>
+            
+            <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/credit" title="版權相關">
+                版權相關
+            </a>
+            
+        </div>
+    </nav>
+
+    <!-- Title -->
+    <div class="w-100 mw8 center dt mt4">
+        <div class="dtc v-mid white pt6-l pb5-l pv3">
+            <h1 class="f1-l f2-m tc tc-m tl-ns">
+                Single Responsibility Principle 單一職責原則
+            </h1>
+            <p class="f4 fw3 tc tc-m tl-ns">
+                
+            </p>
+        </div>
+    </div>
+
+    <!-- Icon -->
+    <div class="relative w-100 mw8 center white dn dn-m db-ns">
+        <i class="header-icon fas fa-circle-notch"></i>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="w-100 ph2 ph4-m ph5-l pv5 pv6-l ">
+    <div class="content">
+        <div class="mw8 center">
+            <div class="cf ">
+                <div class="fl w-100 w-70-l mw7 left fw3 lh-copy post-content pa3 shadow-2">
+                    <!-- Main Post Content -->
+                    <h1 id="Single-Responsibility-Principle-單一職責原則"><a href="#Single-Responsibility-Principle-單一職責原則" class="headerlink" title="Single Responsibility Principle 單一職責原則"></a>Single Responsibility Principle 單一職責原則</h1><p>從原則的名稱很容易就可以得出該原則需要做的事情——物件只擁有/負責某一個責任。<br>怎麼樣才是擁有/負責一個責任呢？<br>🌰（例子）：</p>
+<ul>
+<li>我們設計某個類別只負責會員的邏輯。<ul>
+<li>會員可以進行下單的動作，那麼下單邏輯則可以放在該類別中</li>
+<li>會員無法刪除他人的評論，那麼刪除他人評論的邏輯，就不可實作在該類別中。</li>
+</ul>
+</li>
+<li>遊戲中設計劍的邏輯：<ul>
+<li>若是仙劍等玄幻遊戲的話，可能需要加入飛行的能力。</li>
+<li>若是其他現實類遊戲的話，可能不需要飛行的能力，就不應該實作在該類別中。</li>
+<li>劍可以釋放技能，只是每把劍的技能不同，所以上層類別只需要知道劍能釋放技能，而技能的效果只需要劍自行實作即可。</li>
+</ul>
+</li>
+</ul>
+<p>從上面幾個🌰可以看到，我們需要先定義出某些類別的能力，然後再來實作它。<br>只要不超出定義的範圍，那麼無論實作多少種類別，對於使用到定義類別的上層類別的影響都不會太大。</p>
+<blockquote>
+<p>網路上看到一句話： program to an interface, not an implement</p>
+</blockquote>
+<p>我們定義好類別的能力，也就是定義出了一個抽象（abstract）/介面（interface）。<br>每一個不一樣的會員/劍，只要實作它們自己的細節，實際動作的方法，不實作額外的事情，就符合<span class="point">單一職責原則</span>。</p>
+<p>這個原則其實也能套用到現實世界中也適用喔～</p>
+<ul>
+<li>公司找程式人員時，不是找某個類別的人，而是只找有實作程式能力的人。<ul>
+<li>那麼只需要來應徵的人有自己實現寫程式的介面即可，公司不會理會你有沒有飛行執照，公司注意的是你的寫程式介面。</li>
+</ul>
+</li>
+<li>駕駛車子的方法。<ul>
+<li>駕駛車子只需要駕駛員有實現駕駛的能力（<del>考到駕照</del>）</li>
+<li>可能某些殘障人士駕駛的車子需要做一些改裝後，殘障人士才能駕駛，那麼這時候“駕駛”這個介面就需要定義2種。</li>
+</ul>
+</li>
+</ul>
+<p>依照該原則實作程式的特點有：</p>
+<ul>
+<li>各個類別的責任/邏輯解耦（decoupling）。</li>
+<li>類別只負責自己的實作，只要其定義沒有修改，就不需要修改實作，穩定性UP。</li>
+<li>每個類別有自己的邏輯/責任，修改其他類別後，類別間的影響不大，穩定性UP UP。</li>
+</ul>
+<h2 id="程式範例"><a href="#程式範例" class="headerlink" title="程式範例"></a>程式範例</h2><p>參考： <a href="https://github.com/exia56/player-training2" target="_blank" rel="noopener">https://github.com/exia56/player-training2</a><br>該程式只是模擬個簡單的開發流程，以及簡單的程式碼。</p>
+<p>在我寫的參考程式中，我只有基本定義2個介面——player與playlist。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//～/modal/player/iPlayer.cs</span></span><br><span class="line">  <span class="keyword">interface</span> <span class="title">iPlayer</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">initPlayer</span>(<span class="params"><span class="keyword">string</span> path</span>)</span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">play</span>(<span class="params"></span>)</span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">pause</span>(<span class="params"></span>)</span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">stop</span>(<span class="params"></span>)</span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">dispose</span>(<span class="params"></span>)</span>;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>我定義了player可以播放、暫停、停止、初始化等。<br>只要player的定義不更改，那麼實作player介面的類別都不需要修改。<br>對於上層類別（Program），他只需要知道我們使用的類別一定會實作IPlayer介面就好，內容實作了什麼程式都不重要（VLC or WMP）。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ~/modal/playlistEnumerable.cs</span></span><br><span class="line">  <span class="keyword">interface</span> <span class="title">iPlaylistEnumerable</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="function"><span class="keyword">string</span> <span class="title">getNext</span>(<span class="params"></span>)</span>;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>playlist的部分則是只定義了取得下一個播放文件的功能。<br>我們也可以在接下來的版本定義playlist的功能有增加影片、修改播放順序、刪除影片等功能。（小夥伴們可以自己想想能怎麼做吧～</p>
+<p>Program類別使用到了player與playlist介面，那麼相對來說：</p>
+<ul>
+<li>Program相對於player與playlist是上層類別。</li>
+<li>player與playlist相對於Program是下層類別。</li>
+</ul>
+<p>Program作為上層類別，只需要知道各個介面的能力即可，不需要知道實作介面的類別的細節。<br>而下層類別的player與playlist則只需要處理好自己以及自己的下層類別就好了～</p>
+<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>我們定義好類別的能力，也就是定義出了一個抽象（abstract）/介面（interface），再來以該抽象/介面來實作就好了喔。</p>
+<p>話說。。。介紹完這個原則後，我發現SOLID的東西其實已經解釋了7成了，剩下的只是沒有說清楚講明白而已。<br>接下來幾篇文章就再繼續補充好了，反正總結起來，就是下面這句話的體現了。</p>
+<blockquote>
+<p>program to an interface, not an implement</p>
+</blockquote>
+<h2 id="知識鏈結"><a href="#知識鏈結" class="headerlink" title="知識鏈結"></a>知識鏈結</h2><p>搞笑談工程： <a href="http://teddy-chen-tw.blogspot.com/2014/04/solid.html" target="_blank" rel="noopener">http://teddy-chen-tw.blogspot.com/2014/04/solid.html</a></p>
+
+                    
+                    <!-- Tags Bottom -->
+                    
+                        <div class="tags-container-bottom">
+                            <i class="fa fa-tag pr3 text-main-color"></i><a class="fw3 ph1 dib" href="/tags/知識/">#知識</a> <a class="fw3 ph1 dib" href="/tags/物件導向/">#物件導向</a> <a class="fw3 ph1 dib" href="/tags/OOP/">#OOP</a> <a class="fw3 ph1 dib" href="/tags/SOLID/">#SOLID</a>
+                        </div>
+                    
+                    
+                    <nav class="bt b--black-20" >
+                    
+                        <div class="mv3 fl w-50">
+                        <i class="ma2 fa fa-caret-left"></i><strong class="">上一篇</strong><br>
+                        <a href="/2019/01/28/SOLID範例預先解說(字多慎入)/">
+                            SOLID範例預先解說(字多慎入)
+                        </a>
+                        </div>
+                    
+                    
+                        <div class="mv3 fr tr w-50">
+                        <strong class="">下一篇</strong><i class="ma2 fa fa-caret-right"></i><br>
+                        <a href="/2019/04/01/前公司經歷、事件（？/">
+                            前公司經歷、事件（？
+                        </a>
+                        </div>
+                    
+                    </nav>
+                    
+                    <!-- Comments -->
+                    
+<div id="disqus_thread" class="mt5">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+
+
+
+
+                </div>
+                <div class="fl w-100 w-30-l center fw3 lh-copy pl4-ns tl black-50">
+                    
+                    <hr class="dn-l mw4 black-50 mt5" />
+                    
+                    <!-- Widget 1: About -->
+                    <div class="mt5 mt0-l bg-white pa2 shadow-2">
+    <article class="dt db-l mw8 mw8-m mw5-ns center ml0-l mv3">
+        <div class="dn dtc-m db v-mid tc pr4 pr0-l" style="min-width: 6rem;">
+            <img src="/images/profile.jpg" class="mb4-l br-100 h3 w3 h4-l w4-l dib" title="Li Zhong">
+        </div>
+        <div class="dtc db-l v-mid lh-copy measure center f6 black-80 tj">
+            喜歡將問題分解，各個擊破。<br>喜歡寫容易維護，可讀性佳的程式。<br>喜歡將事情自動化，減少做同樣的事情。
+        </div>
+    </article>
+</div>
+
+                    <hr class="dn-l mw4 black-50 mt5" />
+                    
+                    <!-- Widget 2: Categories -->
+                    
+
+                    <!-- Widget 3: Recent Posts -->
+                    <div class="mt5 tc tl-l bg-white pa2 shadow-2">
+    <h3>近期文章</h3>
+    
+        <p>
+            <a href="/2020/03/21/使用Docker在本機端部署3節點的MongoDb-Replica-Set/">使用Docker在本機端部署3節點的MongoDB Replica Set</a>
+        </p>
+    
+        <p>
+            <a href="/2019/04/01/前公司經歷、事件（？/">前公司經歷、事件（？</a>
+        </p>
+    
+        <p>
+            <a href="/2019/01/28/Single-Responsibility-Principle-單一職責原則/">Single Responsibility Principle 單一職責原則</a>
+        </p>
+    
+        <p>
+            <a href="/2019/01/28/SOLID範例預先解說(字多慎入)/">SOLID範例預先解說(字多慎入)</a>
+        </p>
+    
+        <p>
+            <a href="/2019/01/02/物件導向-SOLID/">物件導向-SOLID</a>
+        </p>
+    
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<div class="bg-1 ph2 ph5-ns pv5">
+    <div class="mv8">
+        <div class="center tc">
+            
+                <div class="dib mh3">
+                    <a class="f3 f2-ns white dim" href="https://www.facebook.com/lizhong.yeo" target="_blank">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </div>
+            
+                <div class="dib mh3">
+                    <a class="f3 f2-ns white dim" href="https://github.com/exia56" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            
+                <div class="dib mh3">
+                    <a class="f3 f2-ns white dim" href="mailto:exia5693@gmail.com" target="_blank">
+                        <i class="fa fa-envelope"></i>
+                    </a>
+                </div>
+            
+        </div>
+        <div class="f6 f5-ns center tc white pt5 fw3">
+            All right reserved | Design & Hexo <a class="link dim white" href="https://github.com/exia56/exia56.github.io">Mike Yeo</a>
+        </div>
+    </div>
+</div>
+
+<!-- After Footer -->
+<!-- Disqus Comments -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'exia56-blog';
+    
+    var disqus_url = 'https://exia56.github.io/2019/01/28/Single-Responsibility-Principle-單一職責原則/';
+    
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        dsq.setAttribute('data-timestamp', +new Date());
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+</body>
+
+</html>

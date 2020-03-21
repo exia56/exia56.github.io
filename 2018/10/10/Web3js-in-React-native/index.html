@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+    <meta name="description" content="簡單記錄自己的學習筆記">
+    
+
+    <!--Author-->
+    
+    <meta name="author" content="Li Zhong">
+    
+
+    <!--Open Graph Title-->
+    
+    <meta property="og:title" content="Web3js in React-native" />
+    
+
+    <!--Open Graph Description-->
+    
+    <meta property="og:description" content="簡單記錄自己的學習筆記" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="極簡部落格" />
+
+    <!--Type page-->
+    
+    <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>
+        Web3js in React-native - 極簡部落格
+    </title>
+
+    <!-- Tachyons Core CSS -->
+    <link rel="stylesheet" href="//unpkg.com/tachyons/css/tachyons.min.css">
+
+    <!-- Custom Fonts -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" crossorigin="anonymous">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+<body>
+
+<!-- Main Content -->
+<!-- Banner -->
+<div class="w-100 bg-1 ph5-ns ph3 text-light">
+    <nav class="db dt-l w-100 mw8 center border-box pv3">
+        <a class="db dtc-l v-mid link dim w-100 w-33-l tc tl-l mb2 mb0-l white" href="/" title="極簡部落格">
+            <img src="/images/cat.svg" class="dib h3 v-mid" alt="極簡部落格">
+            
+            <div class="dib f2 ml2 v-mid">
+                極簡部落格
+            </div>
+            
+        </a>
+        <div class="db dtc-l v-mid w-100 w-two-thirds-l tc tr-l">
+            
+            <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/" title="首頁">
+                首頁
+            </a>
+            
+            <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/archives" title="歸檔">
+                歸檔
+            </a>
+            
+            <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/about" title="關於我">
+                關於我
+            </a>
+            
+            <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/credit" title="版權相關">
+                版權相關
+            </a>
+            
+        </div>
+    </nav>
+
+    <!-- Title -->
+    <div class="w-100 mw8 center dt mt4">
+        <div class="dtc v-mid white pt6-l pb5-l pv3">
+            <h1 class="f1-l f2-m tc tc-m tl-ns">
+                Web3js in React-native
+            </h1>
+            <p class="f4 fw3 tc tc-m tl-ns">
+                
+            </p>
+        </div>
+    </div>
+
+    <!-- Icon -->
+    <div class="relative w-100 mw8 center white dn dn-m db-ns">
+        <i class="header-icon fab fa-ethereum"></i>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="w-100 ph2 ph4-m ph5-l pv5 pv6-l ">
+    <div class="content">
+        <div class="mw8 center">
+            <div class="cf ">
+                <div class="fl w-100 w-70-l mw7 left fw3 lh-copy post-content pa3 shadow-2">
+                    <!-- Main Post Content -->
+                    <p>近期表示對React Native（下面簡寫RN）有點興趣<br>並且也在解除以太坊的資訊，所以打算在寫個RN和Web3JS的App</p>
+<p>再來實際開始編寫時，發現了好多好多問題。。。<br>就讓我們來一一解決吧～</p>
+<h2 id="1-創建RN-App"><a href="#1-創建RN-App" class="headerlink" title="1.創建RN App"></a>1.創建RN App</h2><p>這個在我測試時，因為第一次測試的版本和第二次的版本不一樣，而導致許多問題。<br>所以我用了這個版本的RN：</p>
+<ul>
+<li>“react”: “16.4.1”</li>
+<li>“react-native”: “0.56.0”</li>
+</ul>
+<p>還有babel的子套件版本</p>
+<ul>
+<li>“babel-preset-react-native”: “^5”</li>
+</ul>
+<p>再來更換<code>.babelrc</code>的設定為：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"presets"</span>: [</span><br><span class="line">    <span class="string">"react-native"</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="2-安裝Web3JS的環境套件"><a href="#2-安裝Web3JS的環境套件" class="headerlink" title="2.安裝Web3JS的環境套件"></a>2.安裝Web3JS的環境套件</h2><p>因為在RN環境中無法使用Nodejs的原生套件，所以需要安裝”node-libs-browser”套件，替代NodeJs的原生套件，使用純JS實作的套件。<br>然後在專案根目錄中加上一個<code>rn-cli.config.js</code>檔案，內容為：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> extraNodeModules = <span class="built_in">require</span>(<span class="string">'node-libs-browser'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  extraNodeModules,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>再來增加一個<code>global.js</code>檔案，內同為：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">global.Buffer = <span class="built_in">require</span>(<span class="string">'buffer'</span>).Buffer;</span><br><span class="line">global.process = <span class="built_in">require</span>(<span class="string">'process'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> btoa === <span class="string">'undefined'</span>) &#123;</span><br><span class="line">  global.btoa = <span class="function"><span class="keyword">function</span> (<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Buffer(str, <span class="string">'binary'</span>).toString(<span class="string">'base64'</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> atob === <span class="string">'undefined'</span>) &#123;</span><br><span class="line">  global.atob = <span class="function"><span class="keyword">function</span> (<span class="params">b64Encoded</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Buffer(b64Encoded, <span class="string">'base64'</span>).toString(<span class="string">'binary'</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>最後在要使用<code>Web3Js</code>的檔案中加入<code>import Web3 from &#39;web3&#39;</code>就好咯～</p>
+<h2 id="3-請看範例（附加助記詞套件"><a href="#3-請看範例（附加助記詞套件" class="headerlink" title="3.請看範例（附加助記詞套件"></a>3.請看範例（附加助記詞套件</h2><p><a href="https://github.com/exia56/web3-rn" target="_blank" rel="noopener">https://github.com/exia56/web3-rn</a></p>
+<h2 id="知識連結"><a href="#知識連結" class="headerlink" title="知識連結"></a>知識連結</h2><p>網路找到的資料：<a href="https://gist.github.com/dougbacelar/29e60920d8fa1982535247563eb63766" target="_blank" rel="noopener">https://gist.github.com/dougbacelar/29e60920d8fa1982535247563eb63766</a></p>
+
+                    
+                    <!-- Tags Bottom -->
+                    
+                        <div class="tags-container-bottom">
+                            <i class="fa fa-tag pr3 text-main-color"></i><a class="fw3 ph1 dib" href="/tags/Ethereum/">#Ethereum</a> <a class="fw3 ph1 dib" href="/tags/React-Native/">#React-Native</a> <a class="fw3 ph1 dib" href="/tags/Web3JS/">#Web3JS</a>
+                        </div>
+                    
+                    
+                    <nav class="bt b--black-20" >
+                    
+                        <div class="mv3 fl w-50">
+                        <i class="ma2 fa fa-caret-left"></i><strong class="">上一篇</strong><br>
+                        <a href="/2018/09/09/最近/">
+                            最近
+                        </a>
+                        </div>
+                    
+                    
+                        <div class="mv3 fr tr w-50">
+                        <strong class="">下一篇</strong><i class="ma2 fa fa-caret-right"></i><br>
+                        <a href="/2019/01/02/物件導向-SOLID/">
+                            物件導向-SOLID
+                        </a>
+                        </div>
+                    
+                    </nav>
+                    
+                    <!-- Comments -->
+                    
+<div id="disqus_thread" class="mt5">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+
+
+
+
+                </div>
+                <div class="fl w-100 w-30-l center fw3 lh-copy pl4-ns tl black-50">
+                    
+                    <hr class="dn-l mw4 black-50 mt5" />
+                    
+                    <!-- Widget 1: About -->
+                    <div class="mt5 mt0-l bg-white pa2 shadow-2">
+    <article class="dt db-l mw8 mw8-m mw5-ns center ml0-l mv3">
+        <div class="dn dtc-m db v-mid tc pr4 pr0-l" style="min-width: 6rem;">
+            <img src="/images/profile.jpg" class="mb4-l br-100 h3 w3 h4-l w4-l dib" title="Li Zhong">
+        </div>
+        <div class="dtc db-l v-mid lh-copy measure center f6 black-80 tj">
+            喜歡將問題分解，各個擊破。<br>喜歡寫容易維護，可讀性佳的程式。<br>喜歡將事情自動化，減少做同樣的事情。
+        </div>
+    </article>
+</div>
+
+                    <hr class="dn-l mw4 black-50 mt5" />
+                    
+                    <!-- Widget 2: Categories -->
+                    
+
+                    <!-- Widget 3: Recent Posts -->
+                    <div class="mt5 tc tl-l bg-white pa2 shadow-2">
+    <h3>近期文章</h3>
+    
+        <p>
+            <a href="/2020/03/21/使用Docker在本機端部署3節點的MongoDb-Replica-Set/">使用Docker在本機端部署3節點的MongoDB Replica Set</a>
+        </p>
+    
+        <p>
+            <a href="/2019/04/01/前公司經歷、事件（？/">前公司經歷、事件（？</a>
+        </p>
+    
+        <p>
+            <a href="/2019/01/28/Single-Responsibility-Principle-單一職責原則/">Single Responsibility Principle 單一職責原則</a>
+        </p>
+    
+        <p>
+            <a href="/2019/01/28/SOLID範例預先解說(字多慎入)/">SOLID範例預先解說(字多慎入)</a>
+        </p>
+    
+        <p>
+            <a href="/2019/01/02/物件導向-SOLID/">物件導向-SOLID</a>
+        </p>
+    
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<div class="bg-1 ph2 ph5-ns pv5">
+    <div class="mv8">
+        <div class="center tc">
+            
+                <div class="dib mh3">
+                    <a class="f3 f2-ns white dim" href="https://www.facebook.com/lizhong.yeo" target="_blank">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </div>
+            
+                <div class="dib mh3">
+                    <a class="f3 f2-ns white dim" href="https://github.com/exia56" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            
+                <div class="dib mh3">
+                    <a class="f3 f2-ns white dim" href="mailto:exia5693@gmail.com" target="_blank">
+                        <i class="fa fa-envelope"></i>
+                    </a>
+                </div>
+            
+        </div>
+        <div class="f6 f5-ns center tc white pt5 fw3">
+            All right reserved | Design & Hexo <a class="link dim white" href="https://github.com/exia56/exia56.github.io">Mike Yeo</a>
+        </div>
+    </div>
+</div>
+
+<!-- After Footer -->
+<!-- Disqus Comments -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'exia56-blog';
+    
+    var disqus_url = 'https://exia56.github.io/2018/10/10/Web3js-in-React-native/';
+    
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        dsq.setAttribute('data-timestamp', +new Date());
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+    <meta name="description" content="簡單記錄自己的學習筆記">
+    
+
+    <!--Author-->
+    
+    <meta name="author" content="Li Zhong">
+    
+
+    <!--Open Graph Title-->
+    
+    <meta property="og:title" content="物件導向-SOLID" />
+    
+
+    <!--Open Graph Description-->
+    
+    <meta property="og:description" content="簡單記錄自己的學習筆記" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="極簡部落格" />
+
+    <!--Type page-->
+    
+    <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>
+        物件導向-SOLID - 極簡部落格
+    </title>
+
+    <!-- Tachyons Core CSS -->
+    <link rel="stylesheet" href="//unpkg.com/tachyons/css/tachyons.min.css">
+
+    <!-- Custom Fonts -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" crossorigin="anonymous">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+<body>
+
+<!-- Main Content -->
+<!-- Banner -->
+<div class="w-100 bg-1 ph5-ns ph3 text-light">
+    <nav class="db dt-l w-100 mw8 center border-box pv3">
+        <a class="db dtc-l v-mid link dim w-100 w-33-l tc tl-l mb2 mb0-l white" href="/" title="極簡部落格">
+            <img src="/images/cat.svg" class="dib h3 v-mid" alt="極簡部落格">
+            
+            <div class="dib f2 ml2 v-mid">
+                極簡部落格
+            </div>
+            
+        </a>
+        <div class="db dtc-l v-mid w-100 w-two-thirds-l tc tr-l">
+            
+            <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/" title="首頁">
+                首頁
+            </a>
+            
+            <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/archives" title="歸檔">
+                歸檔
+            </a>
+            
+            <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/about" title="關於我">
+                關於我
+            </a>
+            
+            <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/credit" title="版權相關">
+                版權相關
+            </a>
+            
+        </div>
+    </nav>
+
+    <!-- Title -->
+    <div class="w-100 mw8 center dt mt4">
+        <div class="dtc v-mid white pt6-l pb5-l pv3">
+            <h1 class="f1-l f2-m tc tc-m tl-ns">
+                物件導向-SOLID
+            </h1>
+            <p class="f4 fw3 tc tc-m tl-ns">
+                
+            </p>
+        </div>
+    </div>
+
+    <!-- Icon -->
+    <div class="relative w-100 mw8 center white dn dn-m db-ns">
+        <i class="header-icon fas fa-circle-notch"></i>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="w-100 ph2 ph4-m ph5-l pv5 pv6-l ">
+    <div class="content">
+        <div class="mw8 center">
+            <div class="cf ">
+                <div class="fl w-100 w-70-l mw7 left fw3 lh-copy post-content pa3 shadow-2">
+                    <!-- Main Post Content -->
+                    <p>基礎這東西很神奇，有它沒它好像都可以。</p>
+<blockquote>
+<p>有基礎，可以寫出很棒的程式。<br>沒有基礎，一樣可以寫出一個很棒的程式。<br>差別在於，未來維護、擴充時的<em>痛苦層度</em>…</p>
+</blockquote>
+<p>之前跟公司同事簡單介紹了物件導向是什麼，但了解物件導向的概念，跟寫出<span class="point">好</span>的物件導向程式是兩回事。<br>所以現在來介紹一下物件導向的SOLID概念。</p>
+<h3 id="1-Single-Responsibility-Principle-單一職責原則"><a href="#1-Single-Responsibility-Principle-單一職責原則" class="headerlink" title="1. Single Responsibility Principle 單一職責原則"></a>1. Single Responsibility Principle 單一職責原則</h3><p>一個類別，只需要負責一件事或一個方面的事情。<br>(同樣可以套用到函數去喔～)<br>該原則可以讓類別被“改變”的機會大大降低，增加穩定性。<br>例如：人類是個類別，設計者不會將“飛”實作在人類類別裡，而是創造一個飛機類別，將人類加進去。</p>
+<h3 id="2-Open-Close-Principle-開閉原則"><a href="#2-Open-Close-Principle-開閉原則" class="headerlink" title="2. Open-Close Principle 開閉原則"></a>2. Open-Close Principle 開閉原則</h3><p>設計類別時，我們應該“開放擴充，封閉修改”。<br>因為有些時候我們只是打開某個文件，什麼事都沒做，然後儲存，然後程式就<span class="point">壞掉了</span>!<br>所以我們在設計類別時，應該思考一下該類別未來可能會如何修改，然後盡量不修改主要程式碼。</p>
+<h3 id="3-Liskov-Substitution-Principle-Liskov替換原則"><a href="#3-Liskov-Substitution-Principle-Liskov替換原則" class="headerlink" title="3. Liskov Substitution Principle Liskov替換原則"></a>3. Liskov Substitution Principle Liskov替換原則</h3><p>子類別應該符合超類別的規則，這樣就可以簡單更換。<br>該原則主要應用物件導向的“多形”與“繼承/實作”的特性。<br>在設計程式時，我們應該將類別的容器類型設定為超類別的型態，當需要修改子類別時，直接替換子類別的程式就好了。</p>
+<h3 id="4-Interface-Segregation-Principle-介面隔離原則"><a href="#4-Interface-Segregation-Principle-介面隔離原則" class="headerlink" title="4. Interface Segregation Principle 介面隔離原則"></a>4. Interface Segregation Principle 介面隔離原則</h3><p>各個類別之間應該依賴於抽象層，達成互相之間隔離的效果。（怎麼跟第三點那麼像啊0.0）<br>該原則與第三點的《Liskov替換原則》感覺起來好像。。。<br>小忠子日後再找找資料，了解一下該原則與第三原則有什麼差別。（跪）</p>
+<h3 id="5-Dependency-Inversion-Principle-依賴反轉原則"><a href="#5-Dependency-Inversion-Principle-依賴反轉原則" class="headerlink" title="5. Dependency Inversion Principle 依賴反轉原則"></a>5. Dependency Inversion Principle 依賴反轉原則</h3><p>低層次類別不應該相依於高層次類別，。<br>高層次類別？低層次類別？這是什麼，怎麼定義的？？高低是個相對的概念。<br>假設A類別使用到B類別，那麼B類別就是低層次類別，A類別就是高層次類別。<br>（看到這邊還有發現另一個概念，Dependency Injection 依賴注入，這部分日後再慢慢解說）</p>
+<h2 id="原則的言而總之，總而言之"><a href="#原則的言而總之，總而言之" class="headerlink" title="原則的言而總之，總而言之"></a>原則的言而總之，總而言之</h2><blockquote>
+<p>program to an interface, not an implementation</p>
+</blockquote>
+<p>總結就是以上這句話，SOLID原則有些算是對這句話的解釋。<br>SO原則解釋起來簡單，但對於上面總結的關聯貌似少了一些；相對LID原則是解釋起來難，但了解後可以很容易地了解關聯之處。<br>日後我再每一篇開一個文章來說好了。<br>表示老闆在催我上班了，就先這樣咯～<br>bye～</p>
+
+                    
+                    <!-- Tags Bottom -->
+                    
+                        <div class="tags-container-bottom">
+                            <i class="fa fa-tag pr3 text-main-color"></i><a class="fw3 ph1 dib" href="/tags/知識/">#知識</a> <a class="fw3 ph1 dib" href="/tags/物件導向/">#物件導向</a> <a class="fw3 ph1 dib" href="/tags/OOP/">#OOP</a> <a class="fw3 ph1 dib" href="/tags/SOLID/">#SOLID</a>
+                        </div>
+                    
+                    
+                    <nav class="bt b--black-20" >
+                    
+                        <div class="mv3 fl w-50">
+                        <i class="ma2 fa fa-caret-left"></i><strong class="">上一篇</strong><br>
+                        <a href="/2018/10/10/Web3js-in-React-native/">
+                            Web3js in React-native
+                        </a>
+                        </div>
+                    
+                    
+                        <div class="mv3 fr tr w-50">
+                        <strong class="">下一篇</strong><i class="ma2 fa fa-caret-right"></i><br>
+                        <a href="/2019/01/28/SOLID範例預先解說(字多慎入)/">
+                            SOLID範例預先解說(字多慎入)
+                        </a>
+                        </div>
+                    
+                    </nav>
+                    
+                    <!-- Comments -->
+                    
+<div id="disqus_thread" class="mt5">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+
+
+
+
+                </div>
+                <div class="fl w-100 w-30-l center fw3 lh-copy pl4-ns tl black-50">
+                    
+                    <hr class="dn-l mw4 black-50 mt5" />
+                    
+                    <!-- Widget 1: About -->
+                    <div class="mt5 mt0-l bg-white pa2 shadow-2">
+    <article class="dt db-l mw8 mw8-m mw5-ns center ml0-l mv3">
+        <div class="dn dtc-m db v-mid tc pr4 pr0-l" style="min-width: 6rem;">
+            <img src="/images/profile.jpg" class="mb4-l br-100 h3 w3 h4-l w4-l dib" title="Li Zhong">
+        </div>
+        <div class="dtc db-l v-mid lh-copy measure center f6 black-80 tj">
+            喜歡將問題分解，各個擊破。<br>喜歡寫容易維護，可讀性佳的程式。<br>喜歡將事情自動化，減少做同樣的事情。
+        </div>
+    </article>
+</div>
+
+                    <hr class="dn-l mw4 black-50 mt5" />
+                    
+                    <!-- Widget 2: Categories -->
+                    
+
+                    <!-- Widget 3: Recent Posts -->
+                    <div class="mt5 tc tl-l bg-white pa2 shadow-2">
+    <h3>近期文章</h3>
+    
+        <p>
+            <a href="/2020/03/21/使用Docker在本機端部署3節點的MongoDb-Replica-Set/">使用Docker在本機端部署3節點的MongoDB Replica Set</a>
+        </p>
+    
+        <p>
+            <a href="/2019/04/01/前公司經歷、事件（？/">前公司經歷、事件（？</a>
+        </p>
+    
+        <p>
+            <a href="/2019/01/28/Single-Responsibility-Principle-單一職責原則/">Single Responsibility Principle 單一職責原則</a>
+        </p>
+    
+        <p>
+            <a href="/2019/01/28/SOLID範例預先解說(字多慎入)/">SOLID範例預先解說(字多慎入)</a>
+        </p>
+    
+        <p>
+            <a href="/2019/01/02/物件導向-SOLID/">物件導向-SOLID</a>
+        </p>
+    
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<div class="bg-1 ph2 ph5-ns pv5">
+    <div class="mv8">
+        <div class="center tc">
+            
+                <div class="dib mh3">
+                    <a class="f3 f2-ns white dim" href="https://www.facebook.com/lizhong.yeo" target="_blank">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </div>
+            
+                <div class="dib mh3">
+                    <a class="f3 f2-ns white dim" href="https://github.com/exia56" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            
+                <div class="dib mh3">
+                    <a class="f3 f2-ns white dim" href="mailto:exia5693@gmail.com" target="_blank">
+                        <i class="fa fa-envelope"></i>
+                    </a>
+                </div>
+            
+        </div>
+        <div class="f6 f5-ns center tc white pt5 fw3">
+            All right reserved | Design & Hexo <a class="link dim white" href="https://github.com/exia56/exia56.github.io">Mike Yeo</a>
+        </div>
+    </div>
+</div>
+
+<!-- After Footer -->
+<!-- Disqus Comments -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'exia56-blog';
+    
+    var disqus_url = 'https://exia56.github.io/2019/01/02/物件導向-SOLID/';
+    
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        dsq.setAttribute('data-timestamp', +new Date());
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+</body>
+
+</html>

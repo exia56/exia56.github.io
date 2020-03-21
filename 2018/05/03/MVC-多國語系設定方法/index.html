@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+    <meta name="description" content="簡單記錄自己的學習筆記">
+    
+
+    <!--Author-->
+    
+    <meta name="author" content="Li Zhong">
+    
+
+    <!--Open Graph Title-->
+    
+    <meta property="og:title" content="MVC 多國語系設定方法" />
+    
+
+    <!--Open Graph Description-->
+    
+    <meta property="og:description" content="簡單記錄自己的學習筆記" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="極簡部落格" />
+
+    <!--Type page-->
+    
+    <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>
+        MVC 多國語系設定方法 - 極簡部落格
+    </title>
+
+    <!-- Tachyons Core CSS -->
+    <link rel="stylesheet" href="//unpkg.com/tachyons/css/tachyons.min.css">
+
+    <!-- Custom Fonts -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" crossorigin="anonymous">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+<body>
+
+<!-- Main Content -->
+<!-- Banner -->
+<div class="w-100 bg-1 ph5-ns ph3 text-light">
+    <nav class="db dt-l w-100 mw8 center border-box pv3">
+        <a class="db dtc-l v-mid link dim w-100 w-33-l tc tl-l mb2 mb0-l white" href="/" title="極簡部落格">
+            <img src="/images/cat.svg" class="dib h3 v-mid" alt="極簡部落格">
+            
+            <div class="dib f2 ml2 v-mid">
+                極簡部落格
+            </div>
+            
+        </a>
+        <div class="db dtc-l v-mid w-100 w-two-thirds-l tc tr-l">
+            
+            <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/" title="首頁">
+                首頁
+            </a>
+            
+            <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/archives" title="歸檔">
+                歸檔
+            </a>
+            
+            <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/about" title="關於我">
+                關於我
+            </a>
+            
+            <a class="link dim f6 f5-l dib mr3 mr4-l white" href="/credit" title="版權相關">
+                版權相關
+            </a>
+            
+        </div>
+    </nav>
+
+    <!-- Title -->
+    <div class="w-100 mw8 center dt mt4">
+        <div class="dtc v-mid white pt6-l pb5-l pv3">
+            <h1 class="f1-l f2-m tc tc-m tl-ns">
+                MVC 多國語系設定方法
+            </h1>
+            <p class="f4 fw3 tc tc-m tl-ns">
+                
+            </p>
+        </div>
+    </div>
+
+    <!-- Icon -->
+    <div class="relative w-100 mw8 center white dn dn-m db-ns">
+        <i class="header-icon fas fa-code"></i>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="w-100 ph2 ph4-m ph5-l pv5 pv6-l ">
+    <div class="content">
+        <div class="mw8 center">
+            <div class="cf ">
+                <div class="fl w-100 w-70-l mw7 left fw3 lh-copy post-content pa3 shadow-2">
+                    <!-- Main Post Content -->
+                    <p>(簡單描述開發環境)<br>使用環境： ASP.Net Core 2.X<br>開發工具： VSCode<br>範例網址： <a href="https://github.com/exia56/core-localization" target="_blank" rel="noopener">多語範例Github</a><br>在csproj中的PackageReference有”Microsoft.AspNetCore.All”的套件引用的話，預設就會有語系功能了，只需要再執行以下設定就好了！<br>如果沒有引用All套件，則需要手動安裝以下套件：</p>
+<ol>
+<li>Microsoft.AspNetCore.Mvc.Localization： 語系的預設套件</li>
+<li>Microsoft.AspNetCore.Localization.Routing： 可以使用在URL的語系套件</li>
+</ol>
+<hr>
+<p>今天來個實用的教學好了，前陣子在網站開發網多國語系，然後老闆就要我做一個功能。<br>直接來看例子好了：</p>
+<ol>
+<li>&lt;&lt;domain&gt;&gt;/ =&gt; 進入預設語系（zh）</li>
+<li>&lt;&lt;domain&gt;&gt;/zh =&gt; 進入預設語系（zh）</li>
+<li>&lt;&lt;domain&gt;&gt;/home/contact =&gt; 進入預設語系（zh）的contact頁面</li>
+<li>&lt;&lt;domain&gt;&gt;/en =&gt; 進入預設語系（en）</li>
+<li>&lt;&lt;domain&gt;&gt;/en/home/contact =&gt; 進入預設語系（en）的contact頁面<br>所以我因此陷入了深深的思考<del>老闆就是一個奇怪的生物</del></li>
+</ol>
+<h3 id="1-設定好Resources"><a href="#1-設定好Resources" class="headerlink" title="1. 設定好Resources"></a>1. 設定好Resources</h3><p>設定Resources的位置（這個可以自定義，我是設定在根目錄的“Resources”文件夾中<br>接下來新增controller為基底的Resource檔案，必須符合以下的規則：<br>– Resources/Controller<span style="color:red;font-weight:900;">/</span>HomeController.resx<br>– Resources/Controller<span style="color:red;font-weight:900;">/</span>HomeController.<span style="color:blue;font-weight:700;">en</span>.resx<br>– Resources/Controller<span style="color:red;font-weight:900;">.</span>HomeController.<span style="color:blue;font-weight:700;">en</span>.resx<br>可以使用文件夾（/）的方式或是檔案（.）的方式來區分。<br>resx為副檔名。<br>en為語系名稱，不輸入則是預設的語系。<br><em>詳細的設定方法請到微軟的教程文件中去做參考，鏈接會放在下方</em></p>
+<p>再來是共享的Resource資源檔案，在Resources文件夾裡面的建立一個SharedResources資源檔<br>– Resources/SharedResources.resx<br>– Resources/SharedResources.<span style="color:blue;font-weight:700;">en</span>.resx<br>規則跟上方的類似哦</p>
+<h5 id="SharedResources檔案需要加一個Class才能正常使用，建立在Resources文件夾中："><a href="#SharedResources檔案需要加一個Class才能正常使用，建立在Resources文件夾中：" class="headerlink" title="SharedResources檔案需要加一個Class才能正常使用，建立在Resources文件夾中："></a>SharedResources檔案需要加一個Class才能正常使用，建立在Resources文件夾中：</h5><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//不需要加入任何的屬性或function，namespace也不需要在Resources中</span></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">core_localization</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">SharedResources</span></span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p style="color:blue;">***因為resx是原本在VS使用的資源檔，VSCode無法自動產生，也沒有相關套件。。。<br>***但是可以直接複製其他的resx檔案後再修改，修改不難，稍微看一看就會知道了</p>
+
+<h3 id="2-設定StartUp檔案"><a href="#2-設定StartUp檔案" class="headerlink" title="2. 設定StartUp檔案"></a>2. 設定StartUp檔案</h3><p>在根目錄的StartUp.cs的ConfigureServices function加入以下程式：<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//設定多語的設定項，方便在其他檔案中可以取得一樣的設定項</span></span><br><span class="line">services.Configure&lt;RequestLocalizationOptions&gt;(opts =&gt;</span><br><span class="line">&#123;</span><br><span class="line">    IList&lt;CultureInfo&gt; cultures = <span class="keyword">new</span> List&lt;CultureInfo&gt;&#123;</span><br><span class="line">        <span class="keyword">new</span> CultureInfo(<span class="string">"en"</span>),</span><br><span class="line">        <span class="keyword">new</span> CultureInfo(<span class="string">"zh"</span>),</span><br><span class="line">    &#125;;</span><br><span class="line">    opts.DefaultRequestCulture = <span class="keyword">new</span> RequestCulture(<span class="string">"zh"</span>);</span><br><span class="line">    opts.SupportedCultures = cultures;</span><br><span class="line">    opts.SupportedUICultures = cultures;</span><br><span class="line">    opts.FallBackToParentCultures = <span class="literal">true</span>;</span><br><span class="line">    opts.FallBackToParentUICultures = <span class="literal">true</span>;</span><br><span class="line">    opts.RequestCultureProviders = <span class="keyword">new</span>[]&#123;</span><br><span class="line">        <span class="keyword">new</span> RouteDataRequestCultureProvider <span class="comment">//使用URL的路徑作為語系的設定</span></span><br><span class="line">        &#123;</span><br><span class="line">            Options = opts</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//設定Resources的文件夾路徑（必須與上方Resources文件夾一樣）</span></span><br><span class="line">services.AddLocalization(opts =&gt; opts.ResourcesPath = <span class="string">"Resources"</span>);<span class="comment">//指定Resources的路徑</span></span><br><span class="line">services.AddMvc()</span><br><span class="line">        .AddViewLocalization(); <span class="comment">//在Razor中使用Localizer時，需要加入這行</span></span><br></pre></td></tr></table></figure></p>
+<p>再來在Configure function中實際使用：<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//取得上方設定好的設定項物件</span></span><br><span class="line"><span class="keyword">var</span> localizationOptions = app.ApplicationServices.GetService&lt;IOptions&lt;RequestLocalizationOptions&gt;&gt;();</span><br><span class="line"><span class="comment">//語系設定項的使用，預設URL可以套用的語系項</span></span><br><span class="line">app.UseRequestLocalization(localizationOptions.Value);</span><br><span class="line">app.UseMvc(routes =&gt;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//預設的URL路徑</span></span><br><span class="line">    routes.MapRoute(</span><br><span class="line">        name: <span class="string">"default"</span>,</span><br><span class="line">        template: <span class="string">"&#123;controller=Home&#125;/&#123;action=Index&#125;/&#123;id?&#125;"</span>,</span><br><span class="line">        defaults: <span class="keyword">new</span> &#123; culture = <span class="string">"zh"</span> &#125;); <span class="comment">//若URL沒有語系，預設zh語系</span></span><br><span class="line">    <span class="comment">//對照語系的URL路徑</span></span><br><span class="line">    routes.MapMiddlewareRoute(<span class="string">"&#123;culture=zh&#125;/&#123;*mvcRoute&#125;"</span>, subApp =&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//語系設定項的使用，用於子路徑可以套用語系</span></span><br><span class="line">        subApp.UseRequestLocalization(localizationOptions.Value);</span><br><span class="line">        <span class="comment">//對照有語系的URL路徑</span></span><br><span class="line">        subApp.UseMvc(mvcRoutes =&gt;</span><br><span class="line">        &#123;</span><br><span class="line">            mvcRoutes.MapRoute(</span><br><span class="line">                name: <span class="string">"default"</span>,</span><br><span class="line">                template: <span class="string">"&#123;culture=zh&#125;/&#123;controller=Home&#125;/&#123;action=Index&#125;/&#123;id?&#125;"</span>);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-實際使用咯！"><a href="#3-實際使用咯！" class="headerlink" title="3. 實際使用咯！"></a>3. 實際使用咯！</h3><p>在Controller中可以以DependencyInjection收到語系物件哦！<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">HomeController</span> : <span class="title">Controller</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//這個會自動對照到Resources/Controllers/HomeController.resx檔案</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">readonly</span> IStringLocalizer&lt;HomeController&gt; _localizer;</span><br><span class="line">    <span class="comment">//這個會自動對照到Resources/SharedResources.resx資源檔</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">readonly</span> IStringLocalizer&lt;SharedResources&gt; _sharedLocalize;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">readonly</span> ILogger&lt;HomeController&gt; _logger;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">HomeController</span>(<span class="params">IStringLocalizer&lt;HomeController&gt; localizer,</span></span></span><br><span class="line"><span class="function"><span class="params">        IStringLocalizer&lt;SharedResources&gt; sharedLocalizer,</span></span></span><br><span class="line"><span class="function"><span class="params">        ILogger&lt;HomeController&gt; logger</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        _localizer = localizer;</span><br><span class="line">        _sharedLocalize = sharedLocalizer;</span><br><span class="line">        _logger = logger;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> IActionResult <span class="title">Index</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//使用相關物件就可以取得不同語系的文字咯！</span></span><br><span class="line">        <span class="comment">//"Hello" 就可以對照到Resources裡面的"Hello"key</span></span><br><span class="line">        ViewData[<span class="string">"hello home"</span>] = _localizer[<span class="string">"Hello Home"</span>];</span><br><span class="line">        ViewData[<span class="string">"hello"</span>] = _sharedLocalize[<span class="string">"Hello"</span>];</span><br><span class="line">        <span class="keyword">return</span> View();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//.......</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在CsHtml中直接使用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@* 直接在頁面注入 *@</span><br><span class="line">@inject Microsoft.AspNetCore.Mvc.Localization.IHtmlLocalizer&lt;HomeController&gt; htmlLocalizer;</span><br><span class="line">@inject Microsoft.Extensions.Localization.IStringLocalizer&lt;HomeController&gt; _localizer;</span><br><span class="line"></span><br><span class="line">@* 頁面使用方法 *@</span><br><span class="line">@_localizer[&quot;Hello&quot;]</span><br></pre></td></tr></table></figure></p>
+<p>這樣就可以基本使用了～<br>過幾天再寫一些開發時遇到的陷阱，敬請期待！</p>
+<h3 id="陷阱！"><a href="#陷阱！" class="headerlink" title="陷阱！"></a>陷阱！</h3><p>表示發現了輸入/fake-culture/home/contact，正式來說，沒有fake-culture這個語系，所以應該需要自動跳轉到/zh/home/contact<br>但是他會抓到fake-culture，然後直接給預設的zh語系，然後URL還是/fake-culture/home/contact。。。<br>之後再想辦法去抓一下正確的語系好了。。。這個陷阱就留給各位讀者去解決再互相交流一下好了<br><img class="shadow-2" src="/images/core-trap.jpg"></p>
+<p>後續： <a href="/2018/05/10/MVC-多國語系-陷阱篇/" title="MVC-多國語系-陷阱篇">MVC-多國語系-陷阱篇</a></p>
+<h2 id="知識鏈接"><a href="#知識鏈接" class="headerlink" title="知識鏈接"></a>知識鏈接</h2><p><a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/localization?view=aspnetcore-2.1#implement-a-strategy-to-select-the-languageculture-for-each-request" target="_blank" rel="noopener">微軟官方多語文檔</a><br><a href="https://joonasw.net/view/aspnet-core-localization-deep-dive" target="_blank" rel="noopener">ASP.NET Core Localization Deep Dive</a><br><a href="https://blog.johnwu.cc/article/asp-net-core-localization.html" target="_blank" rel="noopener">John Wu-多國語言教學</a></p>
+
+                    
+                    <!-- Tags Bottom -->
+                    
+                        <div class="tags-container-bottom">
+                            <i class="fa fa-tag pr3 text-main-color"></i><a class="fw3 ph1 dib" href="/tags/ASP-Net-Core/">#ASP.Net Core</a> <a class="fw3 ph1 dib" href="/tags/知識/">#知識</a> <a class="fw3 ph1 dib" href="/tags/多語/">#多語</a> <a class="fw3 ph1 dib" href="/tags/實作/">#實作</a>
+                        </div>
+                    
+                    
+                    <nav class="bt b--black-20" >
+                    
+                        <div class="mv3 fl w-50">
+                        <i class="ma2 fa fa-caret-left"></i><strong class="">上一篇</strong><br>
+                        <a href="/2018/04/23/lambda-匿名函數/">
+                            lambda/匿名函數（不是AWS的lambda）
+                        </a>
+                        </div>
+                    
+                    
+                        <div class="mv3 fr tr w-50">
+                        <strong class="">下一篇</strong><i class="ma2 fa fa-caret-right"></i><br>
+                        <a href="/2018/05/10/MVC-多國語系-陷阱篇/">
+                            MVC-多國語系-陷阱篇
+                        </a>
+                        </div>
+                    
+                    </nav>
+                    
+                    <!-- Comments -->
+                    
+<div id="disqus_thread" class="mt5">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+
+
+
+
+                </div>
+                <div class="fl w-100 w-30-l center fw3 lh-copy pl4-ns tl black-50">
+                    
+                    <hr class="dn-l mw4 black-50 mt5" />
+                    
+                    <!-- Widget 1: About -->
+                    <div class="mt5 mt0-l bg-white pa2 shadow-2">
+    <article class="dt db-l mw8 mw8-m mw5-ns center ml0-l mv3">
+        <div class="dn dtc-m db v-mid tc pr4 pr0-l" style="min-width: 6rem;">
+            <img src="/images/profile.jpg" class="mb4-l br-100 h3 w3 h4-l w4-l dib" title="Li Zhong">
+        </div>
+        <div class="dtc db-l v-mid lh-copy measure center f6 black-80 tj">
+            喜歡將問題分解，各個擊破。<br>喜歡寫容易維護，可讀性佳的程式。<br>喜歡將事情自動化，減少做同樣的事情。
+        </div>
+    </article>
+</div>
+
+                    <hr class="dn-l mw4 black-50 mt5" />
+                    
+                    <!-- Widget 2: Categories -->
+                    
+
+                    <!-- Widget 3: Recent Posts -->
+                    <div class="mt5 tc tl-l bg-white pa2 shadow-2">
+    <h3>近期文章</h3>
+    
+        <p>
+            <a href="/2020/03/21/使用Docker在本機端部署3節點的MongoDb-Replica-Set/">使用Docker在本機端部署3節點的MongoDB Replica Set</a>
+        </p>
+    
+        <p>
+            <a href="/2019/04/01/前公司經歷、事件（？/">前公司經歷、事件（？</a>
+        </p>
+    
+        <p>
+            <a href="/2019/01/28/Single-Responsibility-Principle-單一職責原則/">Single Responsibility Principle 單一職責原則</a>
+        </p>
+    
+        <p>
+            <a href="/2019/01/28/SOLID範例預先解說(字多慎入)/">SOLID範例預先解說(字多慎入)</a>
+        </p>
+    
+        <p>
+            <a href="/2019/01/02/物件導向-SOLID/">物件導向-SOLID</a>
+        </p>
+    
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<div class="bg-1 ph2 ph5-ns pv5">
+    <div class="mv8">
+        <div class="center tc">
+            
+                <div class="dib mh3">
+                    <a class="f3 f2-ns white dim" href="https://www.facebook.com/lizhong.yeo" target="_blank">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </div>
+            
+                <div class="dib mh3">
+                    <a class="f3 f2-ns white dim" href="https://github.com/exia56" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            
+                <div class="dib mh3">
+                    <a class="f3 f2-ns white dim" href="mailto:exia5693@gmail.com" target="_blank">
+                        <i class="fa fa-envelope"></i>
+                    </a>
+                </div>
+            
+        </div>
+        <div class="f6 f5-ns center tc white pt5 fw3">
+            All right reserved | Design & Hexo <a class="link dim white" href="https://github.com/exia56/exia56.github.io">Mike Yeo</a>
+        </div>
+    </div>
+</div>
+
+<!-- After Footer -->
+<!-- Disqus Comments -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'exia56-blog';
+    
+    var disqus_url = 'https://exia56.github.io/2018/05/03/MVC-多國語系設定方法/';
+    
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        dsq.setAttribute('data-timestamp', +new Date());
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+</body>
+
+</html>
